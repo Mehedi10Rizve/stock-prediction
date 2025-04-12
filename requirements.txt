@@ -1,0 +1,10 @@
+requests
+pandas
+scikit-learn
+xgboost
+fastapi
+streamlit
+keras 
+tensorflow 
+sqlite3
+matplotlib

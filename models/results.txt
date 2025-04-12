@@ -1,0 +1,13 @@
+Best hyperparameters found:  {'colsample_bytree': np.float64(0.9282355145850691), 'learning_rate': np.float64(0.06612771975694963), 'max_depth': 9, 'n_estimators': 191, 'scale_pos_weight': 3, 'subsample': np.float64(0.7121300768615294)}
+Accuracy: 0.6229508196721312
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.80      0.38      0.51        32
+           1       0.57      0.90      0.69        29
+
+    accuracy                           0.62        61
+   macro avg       0.68      0.64      0.60        61
+weighted avg       0.69      0.62      0.60        61
+
+ROC-AUC: 0.6368534482758621
