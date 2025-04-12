@@ -5,6 +5,5 @@ xgboost
 fastapi
 streamlit
 keras 
-tensorflow 
-sqlite3
+tensorflow
 matplotlib
