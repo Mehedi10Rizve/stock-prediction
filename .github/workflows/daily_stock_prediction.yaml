@@ -3,7 +3,10 @@ name: Daily Stock Price Prediction
 on:
   schedule:
     - cron: '0 0 * * *'  # Daily at midnight UTC
-  workflow_dispatch:
+  workflow_dispatch:  # Allows manual triggering
+
+permissions:
+  contents: write  # ✅ Grant GitHub Actions permission to push changes
 
 jobs:
   stock_prediction:
@@ -28,9 +31,11 @@ jobs:
         python pipelines/predict_new_data.py
 
     - name: Commit updated prediction
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub's built-in authentication
       run: |
-        git config user.name github-actions[bot]
-        git config user.email github-actions[bot]@users.noreply.github.com
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
         git add docs/prediction.json
-        git commit -m "🔁 Daily prediction update" || echo "No changes"
-        git push
+        git diff --quiet && git diff --staged --quiet || git commit -m "🔁 Daily prediction update"
+        git push https://x-access-token:${GITHUB_TOKEN}@github.com/Mehedi10Rizve/stock-prediction.git HEAD:main
