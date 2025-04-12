@@ -8,3 +8,5 @@ keras
 tensorflow 
 sqlite3
 matplotlib
+yfinance
+ta
