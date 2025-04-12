@@ -6,7 +6,6 @@ fastapi
 streamlit
 keras 
 tensorflow 
-sqlite3
 matplotlib
 yfinance
 ta
