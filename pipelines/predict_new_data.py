@@ -78,7 +78,7 @@ def main():
     # 🔽 Add this section only: Export to JSON for GitHub Pages
     output = {
         "date": df['date'].iloc[0],
-        "prediction": "Up" if predicted_movement[0] == 1 else "Down",
+        "prediction": f"Apple Inc share price will go {'UP' if predicted_movement[0] == 1 else 'DOWN'}",
         "updated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     }
 
