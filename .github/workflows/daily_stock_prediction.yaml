@@ -38,5 +38,4 @@ jobs:
         git config --global user.email "actions@github.com"
         git add docs/prediction.json
         git diff --quiet && git diff --staged --quiet || git commit -m "🔁 Daily prediction update"
-        git pull --rebase origin main
-        git push https://x-access-token:${GITHUB_TOKEN}@github.com/Mehedi10Rizve/stock-prediction.git HEAD:main
+        git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/Mehedi10Rizve/stock-prediction.git HEAD:main
