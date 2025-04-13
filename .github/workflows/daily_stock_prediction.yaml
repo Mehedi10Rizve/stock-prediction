@@ -30,12 +30,14 @@ jobs:
         python pipelines/fetch_and_process.py
         python pipelines/predict_new_data.py
 
-    - name: Commit updated prediction
+    - name: Commit prediction and logs
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub's built-in authentication
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         git add docs/prediction.json
-        git diff --quiet && git diff --staged --quiet || git commit -m "🔁 Daily prediction update"
+        git add logs/prediction.log
+        git diff --quiet && git diff --staged --quiet || git commit -m "🔁 Daily prediction and 📈 log update"
         git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/Mehedi10Rizve/stock-prediction.git HEAD:main
+      
