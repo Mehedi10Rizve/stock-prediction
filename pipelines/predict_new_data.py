@@ -6,6 +6,7 @@ from sklearn.preprocessing import MinMaxScaler
 import os
 import json
 from datetime import datetime, timezone
+import logging
 
 DB_PATH = "data/database/stock_data.db"
 MODEL_PATH = "models/stock_price_predictor.pkl"
@@ -87,6 +88,16 @@ def main():
         json.dump(output, f)
     
     print("✅ Prediction saved to 'docs/prediction.json'")
+
+    # 🧾 Log prediction result for monitoring
+    os.makedirs("logs", exist_ok=True)
+    logging.basicConfig(
+        filename='logs/prediction.log',
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
+    log_msg = f"Prediction for {output['date']}: {output['prediction']}"
+    logging.info(log_msg)
 
 if __name__ == "__main__":
     main()
