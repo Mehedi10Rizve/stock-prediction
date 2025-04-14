@@ -17,6 +17,7 @@ This project predicts the **next day's stock movement direction** (up or down) f
 
 ## Project Structure
 
+```
 .
 ├── .github
 │   └── workflows
@@ -49,6 +50,7 @@ This project predicts the **next day's stock movement direction** (up or down) f
 ├── requirements.txt                    # List of Python dependencies for the project
 ├── README.md                           # Project overview, setup instructions, and documentation
 
+```
 ---
 
 ## How It Works
