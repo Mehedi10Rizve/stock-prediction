@@ -15,13 +15,43 @@ This project predicts the **next day's stock movement direction** (up or down) f
 
 ---
 
-## 🛠️ Project Structure
+## Project Structure
 
-stock-prediction/ │ ├── data/ │ └── database/ │ └── stock_data.db # SQLite database │ ├── models/ │ ├── stock_price_predictor.pkl # Trained model │ └── scaler.pkl # Fitted MinMaxScaler │ ├── pipelines/ │ ├── fetch_and_process.py # Fetch data + feature engineering │ └── predict_new_data.py # Load model + make prediction │ ├── docs/ │ └── prediction.json # Latest prediction output │ ├── logs/ │ └── prediction.log # Log file for monitoring │ ├── .github/ │ └── workflows/ │ └── daily.yml # GitHub Actions workflow │ └── README.md # This file
+.
+├── .github
+│   └── workflows
+│       └── daily.yml                    # GitHub Actions workflow to automate daily predictions
+├── data
+│   ├── database
+│   │   └── stock_data.db               # SQLite database storing processed stock data
+│   ├── processed
+│   │   └── AAPL_processed.csv          # Cleaned and feature-engineered AAPL stock data
+│   └── raw
+│       └── AAPL_daily.csv              # Raw daily stock price data fetched from yfinance
+├── docs
+│   ├── index.html                      # Frontend dashboard (GitHub Pages)
+│   ├── prediction.json                 # Latest model prediction in JSON format
+│   ├── scripts.js                      # JavaScript for dynamic frontend updates
+│   └── styles.css                      # Styling for the frontend dashboard
+├── logs
+│   └── prediction.log                  # Logs of daily prediction activities (for monitoring)
+├── models
+│   ├── stock_price_predictor.pkl       # Trained binary classification model (UP/DOWN)
+│   └── scaler.pkl                      # Scaler used for feature normalization during training
+├── pipelines
+│   ├── fetch_and_process.py            # Pipeline for fetching, processing, and storing stock data
+│   └── predict_new_data.py             # Pipeline for loading latest data and making predictions
+├── src
+│   ├── fetch_stock_data.py             # Fetch stock data from yfinance
+│   ├── data_processing.py              # Perform feature engineering and indicator calculation
+│   ├── insert_to_database.py           # Save processed data into the SQLite database
+│   └── training_model.py               # Train the machine learning model and save artifacts
+├── requirements.txt                    # List of Python dependencies for the project
+├── README.md                           # Project overview, setup instructions, and documentation
 
 ---
 
-## ⚙️ How It Works
+## How It Works
 
 1. **`fetch_and_process.py`**
    - Fetches AAPL stock data (last 300 days)
@@ -53,7 +83,7 @@ stock-prediction/ │ ├── data/ │ └── database/ │ └── stoc
 
 ---
 
-## 📊 Evaluation & Monitoring
+## Evaluation & Monitoring
 
 - **Model Evaluation**:
   - Trained using a **train/test split**
@@ -64,12 +94,10 @@ stock-prediction/ │ ├── data/ │ └── database/ │ └── stoc
 
 ---
 
-## 💻 Frontend Integration
+## Frontend Integration
 
 You can consume `docs/prediction.json` with:
-- 🌐 GitHub Pages static frontend
-- 📊 Streamlit Dashboard
-- 🧩 Any React or JavaScript app
+-  GitHub Pages static frontend
 
 ---
 
