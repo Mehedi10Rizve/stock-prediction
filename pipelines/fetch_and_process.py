@@ -125,7 +125,7 @@ def insert_data_to_db(df):
     )'''
     c.execute(create_table_query)
 
-    df['date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
+    df['date'] = pd.to_datetime(df['date']).dt.strftime('%Y-%m-%d')
 
     columns = [
         'date', 'Close', 'High', 'Low', 'Open', 'Volume', 'symbol',
